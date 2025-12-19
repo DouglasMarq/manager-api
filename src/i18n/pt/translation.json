@@ -1,0 +1,37 @@
+{
+  "COMPANY": {
+    "CREATED_SUCCESS": "Empresa criada com sucesso",
+    "UPDATED_SUCCESS": "Empresa atualizada com sucesso",
+    "DELETED_SUCCESS": "Empresa deletada com sucesso",
+    "INVALID_CREDENTIALS": "Credenciais de empresa inválidas",
+    "NOT_FOUND": "Empresa não encontrada"
+  },
+  "USER": {
+    "CREATED_SUCCESS": "Usuário criado com sucesso",
+    "UPDATED_SUCCESS": "Usuário atualizado com sucesso",
+    "DELETED_SUCCESS": "Usuário deletado com sucesso",
+    "INSUFFICIENT_PERMISSIONS": "Usuário não pussui permissão suficiente",
+    "DOESNOT_BELONG_TO_COMPANY": "Usuário não pertence à empresa informada",
+    "CANNOT_UPDATE_OTHER_USER": "Usuário não pode atualizar outro usuário",
+    "NOT_FOUND": "Usuário não encontrado"
+  },
+  "VEHICLE": {
+    "CREATED_SUCCESS": "Veículo criado com sucesso",
+    "UPDATED_SUCCESS": "Veículo atualizado com sucesso",
+    "DELETED_SUCCESS": "Veículo deletado com sucesso",
+    "EXISTS_BY_VIN": "Um veículo já existe com esse VIN. Por favor, use outro VIN.",
+    "NOT_FOUND": "Veículo não encontrado"
+  },
+  "TELEMETRY": {
+    "ALREADY_EXISTS": "Esse dado já existe na API de Telemetria.",
+    "BAD_REQUEST": "Requisição inválida.",
+    "API_UNAUTHORIZED": "Acesso não autorizado para a API de Telemetria",
+    "API_ERROR": "Ocorreu um erro ao realizar uma requisição para a API de Telemetria"
+  },
+  "DATABASE": {
+    "FOREIGN_KEY_VIOLATION": "Violação de chave estrangeira",
+    "DUPLICATE_KEY": "Valor de chave duplicado",
+    "NOT_NULL_VIOLATION": "Violação de não nulo",
+    "ERROR": "Erro no banco de dados"
+  }
+}

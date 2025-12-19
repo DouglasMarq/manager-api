@@ -1,0 +1,37 @@
+{
+  "COMPANY": {
+    "CREATED_SUCCESS": "Company created successfully",
+    "UPDATED_SUCCESS": "Company updated successfully",
+    "DELETED_SUCCESS": "Company deleted successfully",
+    "INVALID_CREDENTIALS": "Invalid company credentials",
+    "NOT_FOUND": "Company not found"
+  },
+  "USER": {
+    "CREATED_SUCCESS": "User created successfully",
+    "UPDATED_SUCCESS": "User updated successfully",
+    "DELETED_SUCCESS": "User deleted successfully",
+    "INSUFFICIENT_PERMISSIONS": "User doesn't have sufficient permissions",
+    "DOESNOT_BELONG_TO_COMPANY": "User doesn't belong to the current company",
+    "CANNOT_UPDATE_OTHER_USER": "User can't update another user",
+    "NOT_FOUND": "User not found"
+  },
+  "VEHICLE": {
+    "CREATED_SUCCESS": "Vehicle created successfully",
+    "UPDATED_SUCCESS": "Vehicle updated successfully",
+    "DELETED_SUCCESS": "Vehicle deleted successfully",
+    "EXISTS_BY_VIN": "Vehicle with this VIN already exists. Please use another VIN.",
+    "NOT_FOUND": "Vehicle not found"
+  },
+  "TELEMETRY": {
+    "ALREADY_EXISTS": "This data already exists on Telemetry API.",
+    "BAD_REQUEST": "Bad request.",
+    "API_UNAUTHORIZED": "Unauthorized access to Telemetry API",
+    "API_ERROR": "Couldn't make a request to Telemetry API"
+  },
+  "DATABASE": {
+    "FOREIGN_KEY_VIOLATION": "Foreign key violation",
+    "DUPLICATE_KEY": "Duplicate key value",
+    "NOT_NULL_VIOLATION": "Not null violation",
+    "ERROR": "Database error"
+  }
+}
