@@ -36,7 +36,7 @@ export class UpdateUserRequestDto extends PartialType(CreateUserRequestDto) {
   @IsOptional()
   @IsString()
   @MinLength(3, { message: 'Login must be at least 3 characters long' })
-  @MaxLength(255)
+  @MaxLength(255, { message: 'Login must be at maximum 55 characters long' })
   login?: string;
 
   @ApiPropertyOptional({
@@ -45,8 +45,10 @@ export class UpdateUserRequestDto extends PartialType(CreateUserRequestDto) {
   })
   @IsOptional()
   @IsString()
-  @MinLength(8, { message: 'Password must be at least 3 characters long' })
-  @MaxLength(255)
+  @MinLength(8, { message: 'Password must be at least 8 characters long' })
+  @MaxLength(255, {
+    message: 'Password must be at a maximum 255 characters long',
+  })
   password?: string;
 
   @ApiPropertyOptional({

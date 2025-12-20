@@ -35,17 +35,20 @@ export class CreateUserRequestDto {
   @IsNotEmpty()
   @IsString()
   @MinLength(3, { message: 'Login must be at least 3 characters long' })
-  @MaxLength(255)
+  @MaxLength(255, { message: 'Login must be at maximum 55 characters long' })
   login!: string;
 
   @ApiProperty({
-    description: 'The password for the user account',
+    description:
+      'The password for the user account, between 8 and 255 characters. (It becomes hashed)',
     example: 'securePassword123',
   })
   @IsNotEmpty()
   @IsString()
-  @MinLength(8, { message: 'Password must be at least 3 characters long' })
-  @MaxLength(255)
+  @MinLength(8, { message: 'Password must be at least 8 characters long' })
+  @MaxLength(255, {
+    message: 'Password must be at maximum 255 characters long',
+  })
   password!: string;
 
   @ApiProperty({

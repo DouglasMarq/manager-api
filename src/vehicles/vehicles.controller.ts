@@ -10,7 +10,7 @@ import {
   ForbiddenException,
   Logger,
 } from '@nestjs/common';
-import { ApiTags, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import {ApiTags, ApiResponse, ApiBearerAuth, ApiOperation} from '@nestjs/swagger';
 import { VehiclesService } from './vehicles.service';
 import { CreateVehicleRequestDto } from './dto/create-vehicle-request.dto';
 import { UpdateVehicleRequestDto } from './dto/update-vehicle-request.dto';
@@ -29,6 +29,10 @@ export class VehiclesController {
 
   @Post()
   @Roles(UserRole.ADMIN)
+  @ApiOperation({
+    summary: 'Create a new vehicle',
+    description: 'Create a new vehicle, this is an admin only route.',
+  })
   @ApiResponse({
     status: 201,
     description: 'Vehicle created successfully',
@@ -47,6 +51,10 @@ export class VehiclesController {
 
   @Get()
   @Roles(UserRole.ADMIN)
+  @ApiOperation({
+    summary: 'Get all vehicles',
+    description: 'Get all vehicles from database, this is an admin only route.',
+  })
   @ApiResponse({
     status: 200,
     description: 'Vehicles retrieved successfully',
@@ -59,6 +67,10 @@ export class VehiclesController {
   }
 
   @Get(':companyRef')
+  @ApiOperation({
+    summary: 'Get vehicles by companyRef',
+    description: 'Get vehicles given companyRef. An admin can fetch any vehicle given company. A normal user can only fetch vehicles from its own company.',
+  })
   @ApiResponse({
     status: 200,
     description: 'Vehicles retrieved successfully',
@@ -90,6 +102,10 @@ export class VehiclesController {
   }
 
   @Get(':companyRef/:vin')
+  @ApiOperation({
+    summary: 'Get vehicle by companyRef and vin',
+    description: 'Get vehicle given companyRef and vin. An admin can fetch any vehicle given company and vin. A normal user can only fetch vehicles with vin from its own company.',
+  })
   @ApiResponse({
     status: 200,
     description: 'Vehicle retrieved successfully',
@@ -126,6 +142,10 @@ export class VehiclesController {
 
   @Put(':vin')
   @Roles(UserRole.ADMIN)
+  @ApiOperation({
+    summary: 'Update vehicle by vin',
+    description: 'Update vehicle given vin, this is an admin only route.',
+  })
   @ApiResponse({
     status: 200,
     description: 'Vehicle updated successfully',
@@ -145,6 +165,10 @@ export class VehiclesController {
 
   @Delete(':companyRef/:vin')
   @Roles(UserRole.ADMIN)
+  @ApiOperation({
+    summary: 'Delete vehicle by vin',
+    description: 'Delete vehicle given vin, this is an admin only route.',
+  })
   @ApiResponse({ status: 200, description: 'Vehicle deleted successfully' })
   @ApiResponse({ status: 404, description: 'Vehicle not found' })
   async removeVehicleByVin(

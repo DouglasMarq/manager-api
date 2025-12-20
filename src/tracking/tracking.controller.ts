@@ -5,7 +5,7 @@ import {
   Post,
   Headers as Header,
 } from '@nestjs/common';
-import { ApiHeader, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {ApiHeader, ApiOperation, ApiResponse, ApiTags} from '@nestjs/swagger';
 import { TrackingService } from './tracking.service';
 import { TrackingUpdateVehicleRequestDto } from './dto/tracking-update-vehicle-request.dto';
 import { Public } from '../guards/decorators/public.decorator';
@@ -19,6 +19,10 @@ export class TrackingController {
 
   @Public()
   @Post('/webhook')
+  @ApiOperation({
+    summary: 'Update vehicle telemetry',
+    description: 'Update vehicle telemetry for a given VIN. A basic authentication is needed to send update requests to this route.',
+  })
   @ApiHeader({
     name: 'Authorization',
     description: 'Basic Authentication',
