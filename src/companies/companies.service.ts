@@ -84,7 +84,8 @@ export class CompaniesService {
   }
 
   async findOneCompanyByCompanyRef(companyRef: number): Promise<Company> {
-    const company = await this.companyRepository.findOneCompanyByCompanyRef(companyRef);
+    const company =
+      await this.companyRepository.findOneCompanyByCompanyRef(companyRef);
 
     if (!company) {
       this.logger.error(`Company with companyRef ${companyRef} not found`);
@@ -109,7 +110,8 @@ export class CompaniesService {
     companyRef: number,
     updateCompanyDto: UpdateCompanyRequestDto,
   ): Promise<Company> {
-    const company = await this.companyRepository.findOneCompanyByCompanyRef(companyRef);
+    const company =
+      await this.companyRepository.findOneCompanyByCompanyRef(companyRef);
 
     if (!company) {
       this.logger.error(`Company with companyRef ${companyRef} not found`);

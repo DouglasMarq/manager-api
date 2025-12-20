@@ -37,7 +37,9 @@ export class CompanyRepository {
     });
   }
 
-  async findOneCompanyByCompanyRef(companyRef: number): Promise<Company | null> {
+  async findOneCompanyByCompanyRef(
+    companyRef: number,
+  ): Promise<Company | null> {
     return await this.repo.findOne({ companyRef, active: true });
   }
 
