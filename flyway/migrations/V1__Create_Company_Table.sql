@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS company (
     phone VARCHAR(20) NOT NULL,
     active BOOLEAN DEFAULT TRUE,
     company_ref INTEGER NOT NULL UNIQUE,
-    login TEXT NOT NULL UNIQUE,
+    login TEXT NOT NULL,
     password TEXT NOT NULL,
     callback_url TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

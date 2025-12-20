@@ -13,7 +13,7 @@ export class Vehicle {
   })
   companyRef!: Company;
 
-  @Property({ nullable: true, unique: true, length: 255 })
+  @Property({ nullable: true, length: 255 })
   license?: string;
 
   @Property({ unique: true, length: 255 })

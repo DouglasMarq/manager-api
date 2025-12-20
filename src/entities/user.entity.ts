@@ -21,10 +21,10 @@ export class User {
   @Property({ length: 255 })
   name!: string;
 
-  @Property({ unique: true, length: 255 })
+  @Property({ unique: true, length: 255, hidden: true })
   login!: string;
 
-  @Property({ length: 255 })
+  @Property({ length: 255, hidden: true })
   password!: string;
 
   @Property()

@@ -16,6 +16,9 @@ export class TrackingService {
 
   async validateCredentials(auth: string): Promise<void> {
     const credentials = extractCredentials(auth);
+    this.logger.log(
+      `Validating credentials for login: ${credentials.username}`,
+    );
 
     const company = await this.companyService.findOneCompanyByLogin(
       credentials.username,

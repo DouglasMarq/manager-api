@@ -50,7 +50,7 @@ export class CompaniesService {
     const payload: TelemetryCreateCompanyRequestDto = {
       companyRef: createCompanyDto.companyRef,
       username: createCompanyDto.login,
-      password: hashedPassword,
+      password: createCompanyDto.password,
       callbackUrl: createCompanyDto.callbackUrl,
     };
 

@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS vehicle (
        id SERIAL PRIMARY KEY,
        company_ref INTEGER NOT NULL REFERENCES company(company_ref),
-       license VARCHAR(255) UNIQUE,
+       license VARCHAR(255),
        vin VARCHAR(255) NOT NULL UNIQUE,
        lat DOUBLE PRECISION,
        long DOUBLE PRECISION,

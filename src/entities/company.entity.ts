@@ -20,10 +20,10 @@ export class Company {
   @Property({ unique: true })
   companyRef!: number;
 
-  @Property({ unique: true })
+  @Property({ hidden: true })
   login!: string;
 
-  @Property()
+  @Property({ hidden: true })
   password!: string;
 
   @Property()
