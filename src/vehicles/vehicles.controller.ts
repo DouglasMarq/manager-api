@@ -10,7 +10,12 @@ import {
   ForbiddenException,
   Logger,
 } from '@nestjs/common';
-import {ApiTags, ApiResponse, ApiBearerAuth, ApiOperation} from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiResponse,
+  ApiBearerAuth,
+  ApiOperation,
+} from '@nestjs/swagger';
 import { VehiclesService } from './vehicles.service';
 import { CreateVehicleRequestDto } from './dto/create-vehicle-request.dto';
 import { UpdateVehicleRequestDto } from './dto/update-vehicle-request.dto';
@@ -69,7 +74,8 @@ export class VehiclesController {
   @Get(':companyRef')
   @ApiOperation({
     summary: 'Get vehicles by companyRef',
-    description: 'Get vehicles given companyRef. An admin can fetch any vehicle given company. A normal user can only fetch vehicles from its own company.',
+    description:
+      'Get vehicles given companyRef. An admin can fetch any vehicle given company. A normal user can only fetch vehicles from its own company.',
   })
   @ApiResponse({
     status: 200,
@@ -104,7 +110,8 @@ export class VehiclesController {
   @Get(':companyRef/:vin')
   @ApiOperation({
     summary: 'Get vehicle by companyRef and vin',
-    description: 'Get vehicle given companyRef and vin. An admin can fetch any vehicle given company and vin. A normal user can only fetch vehicles with vin from its own company.',
+    description:
+      'Get vehicle given companyRef and vin. An admin can fetch any vehicle given company and vin. A normal user can only fetch vehicles with vin from its own company.',
   })
   @ApiResponse({
     status: 200,

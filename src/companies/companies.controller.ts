@@ -10,7 +10,12 @@ import {
   Logger,
   ForbiddenException,
 } from '@nestjs/common';
-import {ApiTags, ApiResponse, ApiBearerAuth, ApiOperation} from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiResponse,
+  ApiBearerAuth,
+  ApiOperation,
+} from '@nestjs/swagger';
 import { CompaniesService } from './companies.service';
 import { CreateCompanyRequestDto } from './dto/create-company-request.dto';
 import { UpdateCompanyRequestDto } from './dto/update-company-request.dto';
@@ -32,7 +37,8 @@ export class CompaniesController {
   @Roles(UserRole.ADMIN)
   @ApiOperation({
     summary: 'Create a new company',
-    description: 'Create a new company, this is an admin only route. The password becomes hashed.',
+    description:
+      'Create a new company, this is an admin only route. The password becomes hashed.',
   })
   @ApiResponse({
     status: 201,
@@ -54,7 +60,8 @@ export class CompaniesController {
   @Roles(UserRole.ADMIN)
   @ApiOperation({
     summary: 'Get all companies',
-    description: 'Get all companies from database, this is an admin only route.',
+    description:
+      'Get all companies from database, this is an admin only route.',
   })
   @ApiResponse({
     status: 200,
@@ -105,7 +112,8 @@ export class CompaniesController {
   @Roles(UserRole.ADMIN)
   @ApiOperation({
     summary: 'Update company by companyRef',
-    description: 'Update company given companyRef, this is an admin only route. The password becomes hashed.',
+    description:
+      'Update company given companyRef, this is an admin only route. The password becomes hashed.',
   })
   @ApiResponse({
     status: 200,
@@ -131,7 +139,8 @@ export class CompaniesController {
   @Roles(UserRole.ADMIN)
   @ApiOperation({
     summary: 'Delete company by companyRef',
-    description: 'Delete company given companyRef, this is an admin only route.',
+    description:
+      'Delete company given companyRef, this is an admin only route.',
   })
   @ApiResponse({ status: 200, description: 'Company deleted successfully' })
   @ApiResponse({ status: 404, description: 'Company not found' })

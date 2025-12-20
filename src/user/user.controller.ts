@@ -9,7 +9,12 @@ import {
   UseGuards,
   Logger,
 } from '@nestjs/common';
-import {ApiTags, ApiResponse, ApiBearerAuth, ApiOperation} from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiResponse,
+  ApiBearerAuth,
+  ApiOperation,
+} from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { CreateUserRequestDto } from './dto/create-user-request.dto';
 import { UpdateUserRequestDto } from './dto/update-user-request.dto';
@@ -66,7 +71,8 @@ export class UserController {
   @Get(':companyRef')
   @ApiOperation({
     summary: 'Get users by companyRef',
-    description: 'Get users given companyRef. An admin can fetch any user given company. A normal user can only fetch users from its own company.',
+    description:
+      'Get users given companyRef. An admin can fetch any user given company. A normal user can only fetch users from its own company.',
   })
   @ApiResponse({
     status: 200,
@@ -101,7 +107,8 @@ export class UserController {
   @Get(':companyRef/:id')
   @ApiOperation({
     summary: 'Get user by companyRef and userId',
-    description: 'Get user given companyRef and userId. An admin can fetch any user given company and userId. A normal user can only fetch users with userId from its own company.',
+    description:
+      'Get user given companyRef and userId. An admin can fetch any user given company and userId. A normal user can only fetch users with userId from its own company.',
   })
   @ApiResponse({
     status: 200,
@@ -135,7 +142,8 @@ export class UserController {
   @Put(':id')
   @ApiOperation({
     summary: 'Update user by id',
-    description: 'Update user given id. An admin can update any user given id. A normal user can only update its own user.',
+    description:
+      'Update user given id. An admin can update any user given id. A normal user can only update its own user.',
   })
   @ApiResponse({
     status: 200,
