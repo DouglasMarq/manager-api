@@ -65,7 +65,7 @@ export class UserController {
     description: 'User does not belong to the current company',
   })
   @ApiResponse({ status: 404, description: 'User not found' })
-  async findAllUsersByCompanyId(
+  async findAllUsersByCompanyRef(
     @Param('companyRef') companyRef: number,
     @UsersJwt('companyRef') userCompanyRef: number,
     @UsersJwt('role') role: string,
@@ -82,7 +82,7 @@ export class UserController {
       throw new Error('USER.DOESNOT_BELONG_TO_COMPANY');
     }
 
-    return await this.userService.findAllUsersByCompanyId(companyRef);
+    return await this.userService.findAllUsersByCompanyRef(companyRef);
   }
 
   @Get(':companyRef/:id')
@@ -96,7 +96,7 @@ export class UserController {
     description: 'User does not belong to the current company',
   })
   @ApiResponse({ status: 404, description: 'User not found' })
-  async findUserByCompanyIdAndUserId(
+  async findUserByCompanyRefAndUserId(
     @Param('companyRef') companyRef: number,
     @Param('id') id: number,
     @UsersJwt('companyRef') userCompanyRef: number,
@@ -112,7 +112,7 @@ export class UserController {
       throw new Error('USER.DOESNOT_BELONG_TO_COMPANY');
     }
 
-    return await this.userService.findUserByCompanyIdAndUserId(companyRef, id);
+    return await this.userService.findUserByCompanyRefAndUserId(companyRef, id);
   }
 
   @Put(':id')

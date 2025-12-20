@@ -83,8 +83,8 @@ export class CompaniesService {
     return this.companyRepository.findAllCompanies();
   }
 
-  async findOneCompanyById(companyRef: number): Promise<Company> {
-    const company = await this.companyRepository.findOneCompanyById(companyRef);
+  async findOneCompanyByCompanyRef(companyRef: number): Promise<Company> {
+    const company = await this.companyRepository.findOneCompanyByCompanyRef(companyRef);
 
     if (!company) {
       this.logger.error(`Company with companyRef ${companyRef} not found`);
@@ -105,11 +105,11 @@ export class CompaniesService {
     return company;
   }
 
-  async updateCompanyById(
+  async updateCompanyByCompanyRef(
     companyRef: number,
     updateCompanyDto: UpdateCompanyRequestDto,
   ): Promise<Company> {
-    const company = await this.companyRepository.findOneCompanyById(companyRef);
+    const company = await this.companyRepository.findOneCompanyByCompanyRef(companyRef);
 
     if (!company) {
       this.logger.error(`Company with companyRef ${companyRef} not found`);
@@ -119,7 +119,7 @@ export class CompaniesService {
     return this.companyRepository.updateCompany(company, updateCompanyDto);
   }
 
-  async removeCompanyById(companyRef: number): Promise<void> {
+  async removeCompanyByCompanyRef(companyRef: number): Promise<void> {
     if (!(await this.companyRepository.companyExistsById(companyRef))) {
       this.logger.error(`Company with companyRef ${companyRef} not found`);
       throw new NotFoundException('COMPANY.NOT_FOUND');
@@ -134,8 +134,8 @@ export class CompaniesService {
       throw new InternalServerErrorException('TELEMETRY.API_ERROR');
     }
 
-    await this.vehicleService.removeAllVehiclesByCompanyId(companyRef);
+    await this.vehicleService.removeAllVehiclesByCompanyRef(companyRef);
 
-    await this.companyRepository.removeCompanyById(companyRef);
+    await this.companyRepository.removeCompanyByCompanyRef(companyRef);
   }
 }

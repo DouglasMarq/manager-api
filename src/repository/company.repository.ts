@@ -37,7 +37,7 @@ export class CompanyRepository {
     });
   }
 
-  async findOneCompanyById(companyRef: number): Promise<Company | null> {
+  async findOneCompanyByCompanyRef(companyRef: number): Promise<Company | null> {
     return await this.repo.findOne({ companyRef, active: true });
   }
 
@@ -54,7 +54,7 @@ export class CompanyRepository {
     return company;
   }
 
-  async removeCompanyById(id: number): Promise<void> {
+  async removeCompanyByCompanyRef(id: number): Promise<void> {
     await this.repo.nativeUpdate({ id }, { active: false });
   }
 }

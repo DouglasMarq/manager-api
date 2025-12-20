@@ -47,7 +47,13 @@ export class VehicleRepository {
     });
   }
 
-  async findOneVehicleByVinAndCompanyId(
+  async findAllVehiclesByCompanyRef(companyRef: number): Promise<Vehicle[]> {
+    return await this.repo.findAll({
+      where: { active: true, companyRef: companyRef },
+    });
+  }
+
+  async findOneVehicleByVinAndCompanyRef(
     vin: string,
     companyRef: number,
   ): Promise<Vehicle | null> {
@@ -82,7 +88,7 @@ export class VehicleRepository {
     await this.repo.nativeUpdate({ vin }, { active: false });
   }
 
-  async removeVehiclesByCompanyId(companyRef: number): Promise<void> {
+  async removeVehiclesByCompanyRef(companyRef: number): Promise<void> {
     await this.repo.nativeUpdate({ companyRef: companyRef }, { active: false });
   }
 }

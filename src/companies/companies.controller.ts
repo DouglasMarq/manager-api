@@ -71,13 +71,13 @@ export class CompaniesController {
     description: 'User does not belong to the current company',
   })
   @ApiResponse({ status: 404, description: 'Company not found' })
-  async findCompanyById(
+  async findCompanyByCompanyRef(
     @Param('companyRef') companyRef: number,
     @User('companyRef') userCompanyRef: number,
     @User('role') role: string,
     @User('name') name: string,
   ): Promise<Company | null> {
-    this.logger.log(`Incoming request to get company with id: ${companyRef}`);
+    this.logger.log(`Incoming request to get company with ref: ${companyRef}`);
 
     if (userCompanyRef !== companyRef && role !== UserRole.ADMIN) {
       this.logger.error(
@@ -86,7 +86,7 @@ export class CompaniesController {
       throw new ForbiddenException('USER.DOESNOT_BELONG_TO_COMPANY');
     }
 
-    return await this.companyService.findOneCompanyById(companyRef);
+    return await this.companyService.findOneCompanyByCompanyRef(companyRef);
   }
 
   @Put(':companyRef')
@@ -97,7 +97,7 @@ export class CompaniesController {
     type: Company,
   })
   @ApiResponse({ status: 404, description: 'Company not found' })
-  async updateCompanyById(
+  async updateCompanyByCompanyRef(
     @Param('companyRef') companyRef: number,
     @Body() updateCompanyDto: UpdateCompanyRequestDto,
   ): Promise<Company> {
@@ -105,7 +105,7 @@ export class CompaniesController {
       `Incoming request to update company with companyRef: ${companyRef} with data: ${JSON.stringify(updateCompanyDto)}`,
     );
 
-    return await this.companyService.updateCompanyById(
+    return await this.companyService.updateCompanyByCompanyRef(
       companyRef,
       updateCompanyDto,
     );
@@ -115,13 +115,13 @@ export class CompaniesController {
   @Roles(UserRole.ADMIN)
   @ApiResponse({ status: 200, description: 'Company deleted successfully' })
   @ApiResponse({ status: 404, description: 'Company not found' })
-  async removeCompanyById(
+  async removeCompanyByCompanyRef(
     @Param('companyRef') companyRef: number,
   ): Promise<void> {
     this.logger.log(
       `Incoming request to delete company with companyRef: ${companyRef}`,
     );
 
-    return await this.companyService.removeCompanyById(companyRef);
+    return await this.companyService.removeCompanyByCompanyRef(companyRef);
   }
 }

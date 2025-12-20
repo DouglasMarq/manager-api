@@ -47,7 +47,7 @@ export class UserRepository {
     });
   }
 
-  async findAllUsersByCompanyId(companyRef: number): Promise<User[]> {
+  async findAllUsersByCompanyRef(companyRef: number): Promise<User[]> {
     return await this.repo.findAll({
       where: { active: true, companyRef: companyRef },
     });
@@ -57,7 +57,7 @@ export class UserRepository {
     return await this.repo.findOne({ id, active: true });
   }
 
-  async findUserByCompanyIdAndUserId(
+  async findUserByCompanyRefAndUserId(
     companyRef: number,
     id: number,
   ): Promise<User | null> {

@@ -55,7 +55,7 @@ export class VehiclesController {
   async findAllVehicles(): Promise<Vehicle[]> {
     this.logger.log(`Incoming request to get all vehicles`);
 
-    return await this.vehicleService.findAll();
+    return await this.vehicleService.findAllVehicles();
   }
 
   @Get(':companyRef')
@@ -69,24 +69,24 @@ export class VehiclesController {
     description: 'User does not belong to the current company',
   })
   @ApiResponse({ status: 404, description: 'Vehicle not found' })
-  async findAllVehiclesByCompanyId(
-    @Param('companyRef') id: number,
-    @User('companyRef') companyRef: number,
+  async findAllVehiclesByCompanyRef(
+    @Param('companyRef') companyRef: number,
+    @User('companyRef') userCompanyRef: number,
     @User('role') role: string,
     @User('name') name: string,
   ): Promise<Vehicle[]> {
     this.logger.log(
-      `Incoming request to get all vehicles for company: ${id} by user ${name}`,
+      `Incoming request to get all vehicles for company: ${companyRef} by user ${name}`,
     );
 
-    if (companyRef !== id && role !== UserRole.ADMIN) {
+    if (userCompanyRef !== companyRef && role !== UserRole.ADMIN) {
       this.logger.error(
-        `User ${name} of company id ${companyRef} does not belong to the company: ${id}`,
+        `User ${name} of company id ${userCompanyRef} does not belong to the company: ${companyRef}`,
       );
       throw new ForbiddenException('USER.DOESNOT_BELONG_TO_COMPANY');
     }
 
-    return await this.vehicleService.findAll();
+    return await this.vehicleService.findAllVehiclesByCompanyRef(companyRef);
   }
 
   @Get(':companyRef/:vin')
@@ -100,9 +100,9 @@ export class VehiclesController {
     description: 'User does not belong to the current company',
   })
   @ApiResponse({ status: 404, description: 'Vehicle not found' })
-  async findAllVehiclesByCompanyIdAndVin(
-    @Param('vin') vin: string,
+  async findAllVehiclesByCompanyRefAndVin(
     @Param('companyRef') companyRef: number,
+    @Param('vin') vin: string,
     @User('companyRef') userCompanyRef: number,
     @User('role') role: string,
     @User('name') name: string,
@@ -118,7 +118,7 @@ export class VehiclesController {
       throw new ForbiddenException('USER.DOESNOT_BELONG_TO_COMPANY');
     }
 
-    return await this.vehicleService.findVehicleByVinAndCompanyId(
+    return await this.vehicleService.findVehicleByVinAndCompanyRef(
       vin,
       companyRef,
     );

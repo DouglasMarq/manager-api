@@ -60,7 +60,7 @@ export class UserService {
     return this.userRepository.findAllUsers();
   }
 
-  async findAllUsersByCompanyId(companyRef: number): Promise<User[]> {
+  async findAllUsersByCompanyRef(companyRef: number): Promise<User[]> {
     if (!(await this.companyService.companyExistsByCompanyRef(companyRef))) {
       this.logger.error(`Company with companyRef ${companyRef} doesn't exists`);
       throw new NotFoundException(
@@ -69,10 +69,10 @@ export class UserService {
       );
     }
 
-    return this.userRepository.findAllUsersByCompanyId(companyRef);
+    return this.userRepository.findAllUsersByCompanyRef(companyRef);
   }
 
-  async findUserByCompanyIdAndUserId(
+  async findUserByCompanyRefAndUserId(
     companyRef: number,
     id: number,
   ): Promise<User> {
@@ -84,7 +84,7 @@ export class UserService {
       );
     }
 
-    const user = await this.userRepository.findUserByCompanyIdAndUserId(
+    const user = await this.userRepository.findUserByCompanyRefAndUserId(
       companyRef,
       id,
     );

@@ -66,23 +66,27 @@ export class VehiclesService {
     return this.vehicleRepository.createVehicle(createVehicleDto);
   }
 
-  async findAll(): Promise<Vehicle[]> {
+  async findAllVehicles(): Promise<Vehicle[]> {
     return this.vehicleRepository.findAllVehicles();
   }
 
-  async findVehicleByVinAndCompanyId(
+  async findAllVehiclesByCompanyRef(companyRef: number): Promise<Vehicle[]> {
+    return this.vehicleRepository.findAllVehiclesByCompanyRef(companyRef);
+  }
+
+  async findVehicleByVinAndCompanyRef(
     vin: string,
     companyRef: number,
   ): Promise<Vehicle> {
     const vehicle =
-      await this.vehicleRepository.findOneVehicleByVinAndCompanyId(
+      await this.vehicleRepository.findOneVehicleByVinAndCompanyRef(
         vin,
         companyRef,
       );
 
     if (!vehicle) {
       this.logger.error(
-        `Vehicle with vin ${vin} and companyId ${companyRef} not found`,
+        `Vehicle with vin ${vin} and companyRef ${companyRef} not found`,
       );
       throw new NotFoundException('VEHICLE.NOT_FOUND');
     }
@@ -126,7 +130,7 @@ export class VehiclesService {
     await this.vehicleRepository.removeVehicleByVin(vin);
   }
 
-  async removeAllVehiclesByCompanyId(companyRef: number): Promise<void> {
-    await this.vehicleRepository.removeVehiclesByCompanyId(companyRef);
+  async removeAllVehiclesByCompanyRef(companyRef: number): Promise<void> {
+    await this.vehicleRepository.removeVehiclesByCompanyRef(companyRef);
   }
 }
